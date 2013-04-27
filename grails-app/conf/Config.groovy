@@ -85,11 +85,12 @@ log4j = {
 		}
 		production {
 			appenders {
-				appender new DailyRollingFileAppender(
-						name: 'application',
-						file: '${catalina.base}/logs/sfc-bot.log',
-						layout:pattern(conversionPattern: '%d{HH:mm:ss} [%t] %p %C{2} - %m%n'),
-						datePattern: 'yyyy-MM-dd')
+				console name:'application', layout:pattern(conversionPattern: '%d{HH:mm:ss} [%t] %p %C{2} - %m%n')
+//				appender new DailyRollingFileAppender(
+//						name: 'application',
+//						file: '${catalina.base}/logs/sfc-bot.log',
+//						layout:pattern(conversionPattern: '%d{HH:mm:ss} [%t] %p %C{2} - %m%n'),
+//						datePattern: 'yyyy-MM-dd')
 			}
 			root {
 				warn 'application'
