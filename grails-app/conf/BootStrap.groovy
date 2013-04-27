@@ -1,10 +1,12 @@
 import com.kamatama41.sfc.Software
 
 class BootStrap {
+	def grailsApplication
 
     def init = { servletContext ->
 		if(Software.count == 0) {
-			new File('data/software.csv').eachLine { csv ->
+			def text = grailsApplication.parentContext.getResource("classpath:data/software.csv").inputStream.text
+			text.eachLine { csv ->
 				def values = csv.split(',')
 				def release = new Date(values[0])
 				def name = values[1]
