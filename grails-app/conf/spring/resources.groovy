@@ -3,9 +3,7 @@ import com.kamatama41.sfc.TwitterService
 // Place your Spring DSL code here
 beans = {
 	def env = System.getenv()
-	env.each {
-		println "${it.key}=${it.value}"
-	}
+	throw new RuntimeException(env.toString())
 	def consumerKey = env['TWITTER_CONSUMER_KEY']
 	def consumerSecret = env['TWITTER_CONSUMER_SECRET']
 	def token = env['TWITTER_TOKEN']
