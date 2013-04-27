@@ -12,7 +12,8 @@ class TwitterBotJob {
 	def dateFormat = new SimpleDateFormat("yyyy/MM/dd")
 
     static triggers = {
-      simple repeatInterval: 7200000L // execute job once in 2 hours
+//      simple repeatInterval: 7200000L // execute job once in 2 hours
+    	simple repeatInterval: 30000L // execute job once in 30sec
     }
 
     def execute() {
