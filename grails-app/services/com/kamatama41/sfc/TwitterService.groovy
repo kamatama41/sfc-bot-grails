@@ -9,7 +9,8 @@ class TwitterService {
 	private static def logger = LoggerFactory.getLogger(TwitterService)
 	private final Twitter twitter
 
-	TwitterService(String consumerKey, String consumerSecret, String token, String tokenSecret) {
+	TwitterService(String consumerKey, String consumerSecret, String token, String tokenSecret, env) {
+		throw new RuntimeException(env.toString())
 		def singleton = TwitterFactory.singleton
 		singleton.setOAuthConsumer(consumerKey, consumerSecret)
 		singleton.setOAuthAccessToken(new AccessToken(token, tokenSecret))
