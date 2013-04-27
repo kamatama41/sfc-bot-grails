@@ -95,7 +95,7 @@ log4j = {
 //						datePattern: 'yyyy-MM-dd')
 			}
 			root {
-				warn 'application'
+				info 'application'
 			}
 		}
 	}
