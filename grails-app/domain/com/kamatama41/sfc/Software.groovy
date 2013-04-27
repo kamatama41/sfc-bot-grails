@@ -17,6 +17,6 @@ class Software {
 	}
 
 	def getGoogleSearchUrl() {
-		return "https://www.google.co.jp/search?q=${title}"
+		return "https://www.google.co.jp/search?q=${title.encodeAsURL()}"
 	}
 }

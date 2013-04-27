@@ -9,13 +9,10 @@ class TwitterService {
 	private static def logger = LoggerFactory.getLogger(TwitterService)
 	private final Twitter twitter
 
-	TwitterService(String consumerKey, String consumerSecret, String token, String tokenSecret, env) {
-		env.each {
-			logger.error("${it.key}:${it.value}")
-		}
+	TwitterService(config) {
 		def singleton = TwitterFactory.singleton
-		singleton.setOAuthConsumer(consumerKey, consumerSecret)
-		singleton.setOAuthAccessToken(new AccessToken(token, tokenSecret))
+		singleton.setOAuthConsumer(config.consumerKey, config.consumerSecret)
+		singleton.setOAuthAccessToken(new AccessToken(config.token, config.tokenSecret))
 		twitter = singleton
 	}
 
@@ -23,4 +20,5 @@ class TwitterService {
 		twitter.updateStatus(message)
 		logger.info("message posted. (${message})")
     }
+
 }

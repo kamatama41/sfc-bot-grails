@@ -65,10 +65,12 @@ grails.hibernate.cache.queries = false
 environments {
     development {
         grails.logging.jul.usebridge = true
+		createTwitterConfig(System.getenv())
     }
     production {
         grails.logging.jul.usebridge = false
         // TODO: grails.serverURL = "http://www.changeme.com"
+		createTwitterConfig(System.getProperties())
     }
 }
 
@@ -108,4 +110,11 @@ log4j = {
            'org.springframework',
            'org.hibernate',
            'net.sf.ehcache.hibernate'
+}
+
+private def createTwitterConfig(configSource) {
+	twitter.consumerKey = configSource['TWITTER_CONSUMER_KEY']
+	twitter.consumerSecret = configSource['TWITTER_CONSUMER_SECRET']
+	twitter.token = configSource['TWITTER_TOKEN']
+	twitter.tokenSecret = configSource['TWITTER_TOKEN_SECRET']
 }
