@@ -16,9 +16,9 @@ class TwitterService {
 		twitter = singleton
 	}
 
-    def post(String message) {
+	def post(String message) {
 		twitter.updateStatus(message)
 		logger.info("message posted. (${message})")
-    }
+	}
 
 }

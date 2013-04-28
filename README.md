@@ -1,5 +1,5 @@
 sfc-bot
 =======
 
-Twitter Bot(https://twitter.com/SuperFamicomBot)
+Twitter Bot(https://twitter.com/SuperFamicomBot),
 Software List(http://sfc-bot.kamatama.cloudbees.net/)

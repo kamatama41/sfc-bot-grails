@@ -11,17 +11,17 @@ class TwitterBotJob {
 	def random = new Random()
 	def dateFormat = new SimpleDateFormat("yyyy/MM/dd")
 
-    static triggers = {
+	static triggers = {
 		simple repeatInterval: 7200000L // execute job once in 2 hours
 //		simple repeatInterval: 30000L // execute job once in 30sec
-    }
+	}
 
-    def execute() {
+	def execute() {
 		def count = Software.count
-		if(count > 0) {
+		if (count > 0) {
 			def software = Software.get(random.nextInt(count) + 1)
 			String message = "${software.title}(${software.publisher}) 発売日:${dateFormat.format(software.release)} 価格:${software.price}円"
-			if(urlAvailable(software.wikipediaUrl)) {
+			if (urlAvailable(software.wikipediaUrl)) {
 				message += (' ' + software.wikipediaUrl)
 			} else {
 				message += (' ' + software.googleSearchUrl)
@@ -30,10 +30,10 @@ class TwitterBotJob {
 		} else {
 			log.warn("table under zero -> ${count}")
 		}
-    }
+	}
 
 	private static boolean urlAvailable(String url) {
-		def http = (HttpURLConnection)new URL(url).openConnection()
+		def http = (HttpURLConnection) new URL(url).openConnection()
 		http.setRequestMethod("GET")
 		http.connect()
 		def responseCode = http.responseCode
@@ -41,6 +41,6 @@ class TwitterBotJob {
 		logger.debug("URL: ${url}, ResponseCode:${responseCode}")
 
 		// ResponseCode is success.
-		return  ((int)(responseCode / 100)) == 2
+		return ((int) (responseCode / 100)) == 2
 	}
 }
