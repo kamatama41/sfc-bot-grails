@@ -9,10 +9,10 @@
 <table class="table table-bordered table-striped table-condensed">
     <thead>
     <tr>
-        <th style="width: 35%">タイトル</th>
-        <th style="width: 35%">販売元</th>
-        <th style="width: 15%">発売日</th>
-        <th style="width: 15%">価格</th>
+        <g:sortableColumn property="title" title="タイトル" style="width: 35%"/>
+        <g:sortableColumn property="publisher" title="販売元" style="width: 35%"/>
+        <g:sortableColumn property="release" title="発売日" style="width: 15%"/>
+        <g:sortableColumn property="price" title="価格" style="width: 15%"/>
     </tr>
     </thead>
     <tbody>
