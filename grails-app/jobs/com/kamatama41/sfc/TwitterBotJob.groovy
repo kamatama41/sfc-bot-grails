@@ -28,7 +28,7 @@ class TwitterBotJob {
 			}
 			twitterService.post(message)
 		} else {
-			log.warn("table under zero -> ${count}")
+			log.warn("Software.count under zero -> ${count}")
 		}
 	}
 
@@ -40,7 +40,7 @@ class TwitterBotJob {
 
 		logger.debug("URL: ${url}, ResponseCode:${responseCode}")
 
-		// ResponseCode is success.
-		return ((int) (responseCode / 100)) == 2
+		// ResponseCode is success or redirect
+		return ((int) (responseCode / 100)) == 2 || responseCode == 301
 	}
 }
