@@ -7,13 +7,17 @@ import java.text.SimpleDateFormat
 class TwitterBotJob {
 
 	private static def logger = LoggerFactory.getLogger(TwitterBotJob)
+	private def random = new Random()
+	private def dateFormat = new SimpleDateFormat("yyyy/MM/dd")
+
+	// TODO configurable
+	def cronExpression = '0 0 0/2 * * ?'
+
 	def twitterService
-	def random = new Random()
-	def dateFormat = new SimpleDateFormat("yyyy/MM/dd")
 
 	static triggers = {
-		simple repeatInterval: 7200000L // execute job once in 2 hours
-//		simple repeatInterval: 30000L // execute job once in 30sec
+		cron startDelay: 30000L, cronExpression: cronExpression
+//		simple repeatInterval: 7200000L // execute job once in 2 hours
 	}
 
 	def execute() {
