@@ -11,7 +11,7 @@ class TwitterBotJob {
 	private def dateFormat = new SimpleDateFormat("yyyy/MM/dd")
 
 	// TODO configurable
-	def cronExpression = '0 0 0/2 * * ?'
+	static def cronExpression = '0 0 0/2 * * ?'
 
 	def twitterService
 
