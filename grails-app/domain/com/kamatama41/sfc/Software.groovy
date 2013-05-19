@@ -13,10 +13,14 @@ class Software {
 	}
 
 	def getWikipediaUrl() {
-		return "http://ja.wikipedia.org/wiki/${title.encodeAsURL()}"
+		return "http://ja.wikipedia.org/wiki/${encodeUrl(title)}"
 	}
 
 	def getGoogleSearchUrl() {
-		return "https://www.google.co.jp/search?q=${title.encodeAsURL()}"
+		return "https://www.google.co.jp/search?q=${encodeUrl(title)}"
+	}
+
+	private static String encodeUrl(String message) {
+		URLEncoder.encode(message, 'UTF-8').replace('+', '%20')
 	}
 }
